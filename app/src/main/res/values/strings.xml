@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">ParcelDeliveryDemo</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_calculate">Calculate</string>
+    <string name="title_shipment">Shipment</string>
+    <string name="title_profile">Profile</string>
+    <string name="vehicle_image">Vehicle Image\n</string>
 </resources>

@@ -4,17 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.dikascode.parceldeliverydemo.R
 import com.dikascode.parceldeliverydemo.databinding.FragmentHomeBinding
+import com.dikascode.parceldeliverydemo.model.Vehicle
+import com.dikascode.parceldeliverydemo.ui.home.adapter.VehicleAdapter
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -28,11 +28,25 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
         homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+//            textView.text = it
         }
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Dummy data
+        val vehicleList = listOf(
+            Vehicle("Ocean freight", "International", R.drawable.freight_image),
+            Vehicle("Cargo freight", "Reliable", R.drawable.cargo_van),
+            Vehicle("Air freight", "International", R.drawable.airplane)
+        )
+
+        val adapter = VehicleAdapter(vehicleList)
+        binding.vehiclesRecyclerView.adapter = adapter
+        binding.vehiclesRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
     }
 
     override fun onDestroyView() {

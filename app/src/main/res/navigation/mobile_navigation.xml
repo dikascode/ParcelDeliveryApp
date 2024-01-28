@@ -12,14 +12,14 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.dikascode.parceldeliverydemo.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_calculate"
+        android:name="com.dikascode.parceldeliverydemo.ui.calculate.CalculateFragment"
+        android:label="@string/title_calculate"
+        tools:layout="@layout/fragment_calculate" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.dikascode.parceldeliverydemo.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_shipment"
+        android:name="com.dikascode.parceldeliverydemo.ui.shipment.ShipmentFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_shipment" />
 </navigation>
