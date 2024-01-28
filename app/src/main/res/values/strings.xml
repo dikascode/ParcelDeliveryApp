@@ -5,4 +5,6 @@
     <string name="title_shipment">Shipment</string>
     <string name="title_profile">Profile</string>
     <string name="vehicle_image">Vehicle Image\n</string>
+    <string name="header_title_calculate">Calculate</string>
+    <string name="back_btn">back Button</string>
 </resources>

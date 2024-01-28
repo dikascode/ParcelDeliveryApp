@@ -6,17 +6,363 @@
     android:layout_height="match_parent"
     tools:context=".ui.calculate.CalculateFragment">
 
+    <!-- Header Section -->
+    <RelativeLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/purple_background"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/backArrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/back_btn"
+            android:src="@drawable/ic_back_arrow" />
+
+        <TextView
+            android:id="@+id/headerTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/header_title_calculate"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+
+    <!-- Destination Title -->
     <TextView
-        android:id="@+id/text_dashboard"
+        android:id="@+id/destinationTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Destination"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerLayout" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/destinationCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="16dp"
+        android:background="@color/white"
+        android:padding="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/destinationTitle">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Sender Location LinearLayout -->
+            <LinearLayout
+                android:id="@+id/senderLocationLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_corner_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_notifications" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="24dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@color/grey" />
+
+                <EditText
+                    android:id="@+id/senderLocationEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="Sender location"
+                    android:inputType="text"
+                    android:padding="8dp" />
+            </LinearLayout>
+
+            <!-- Receiver Location LinearLayout -->
+            <LinearLayout
+                android:id="@+id/receiverLocationLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_corner_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_notifications" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="24dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@color/grey" />
+
+                <EditText
+                    android:id="@+id/receiverLocationEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="Receiver location"
+                    android:inputType="text"
+                    android:padding="8dp" />
+            </LinearLayout>
+
+            <!-- Approx Weight LinearLayout -->
+            <LinearLayout
+                android:id="@+id/approxWeightLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_corner_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_notifications" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="24dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@color/grey" />
+
+                <EditText
+                    android:id="@+id/approxWeightEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="Receiver location"
+                    android:inputType="text"
+                    android:padding="8dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <!-- Packaging Section -->
+    <TextView
+        android:id="@+id/packagingTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Packaging"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/destinationCard" />
+
+    <!-- Package Option Spinner/Dropdown -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/packageOptionInputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/rounded_corner_background"
+        android:elevation="2dp"
+        android:padding="8dp"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="@color/grey"
+        app:endIconMode="dropdown_menu"
+        app:hintEnabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/packagingTitle">
+
+        <AutoCompleteTextView
+            android:id="@+id/packageAutoCompleteTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:drawableStart="@drawable/ic_notifications"
+            android:drawablePadding="8dp"
+            android:hint="Box"
+            android:inputType="none"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:popupBackground="@color/white"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <!-- Categories Section -->
+    <TextView
+        android:id="@+id/categoriesTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Categories"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/packageOptionInputLayout" />
+
+    <GridLayout
+        android:id="@+id/gridLayoutCategories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:columnCount="4"
+        android:columnOrderPreserved="true"
+        android:padding="4dp"
+        android:rowCount="2"
+        app:layout_constraintTop_toBottomOf="@id/categoriesTitle">
+
+        <!-- Category Button for Documents -->
+        <Button
+            android:id="@+id/buttonDocuments"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="4dp"
+            android:padding="0dp"
+            android:text="Documents"
+            android:textColor="@color/black"
+            android:textSize="10sp" />
+
+        <!-- Category Button for 'Glass' -->
+        <Button
+            android:id="@+id/buttonGlass"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="4dp"
+            android:padding="0dp"
+            android:text="Glass"
+            android:textColor="@color/black"
+            android:textSize="10sp" />
+
+        <!-- Category Button for 'Liquid' -->
+        <Button
+            android:id="@+id/buttonLiquid"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="4dp"
+            android:padding="0dp"
+            android:text="Liquid"
+
+            android:textColor="@color/black"
+            android:textSize="10sp" />
+
+        <!-- Category Button for 'Food' -->
+        <Button
+            android:id="@+id/buttonFood"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="4dp"
+            android:padding="0dp"
+            android:text="Food"
+            android:textColor="@color/black"
+            android:textSize="10sp" />
+
+        <!-- Category Button for 'Electronic' -->
+        <Button
+            android:id="@+id/buttonElectronic"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="4dp"
+            android:padding="0dp"
+            android:text="Electronic"
+            android:textColor="@color/black"
+            android:textSize="10sp" />
+
+        <!-- Category Button for 'Product' -->
+        <Button
+            android:id="@+id/buttonProduct"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="4dp"
+            android:padding="0dp"
+            android:text="Product"
+            android:textColor="@color/black"
+            android:textSize="10sp" />
+
+        <!-- Category Button for 'Others' -->
+        <Button
+            android:id="@+id/buttonOther"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="4dp"
+            android:padding="0dp"
+            android:text="Others"
+            android:textColor="@color/black"
+            android:textSize="10sp" />
+    </GridLayout>
+
+
+    <!-- Calculate Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/calculateButton"
+        style="@style/CustomButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_calculate_button"
+        android:padding="12dp"
+        android:text="Calculate"
+        android:textColor="@color/white"
+        app:cornerRadius="30dp"
+       app:layout_constraintTop_toBottomOf="@+id/gridLayoutCategories"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

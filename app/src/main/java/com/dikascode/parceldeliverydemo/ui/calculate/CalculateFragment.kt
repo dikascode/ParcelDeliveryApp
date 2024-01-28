@@ -28,9 +28,9 @@ class CalculateFragment : Fragment() {
         _binding = FragmentCalculateBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
+//        val textView: TextView = binding.textDashboard
         calculateViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+//            textView.text = itc
         }
         return root
     }
