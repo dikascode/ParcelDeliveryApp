@@ -7,4 +7,8 @@
     <string name="vehicle_image">Vehicle Image\n</string>
     <string name="header_title_calculate">Calculate</string>
     <string name="back_btn">back Button</string>
+    <string name="shipment_details">Your delivery, #NEJ20089934122231 from Atlanta, is arriving today!</string>
+    <string name="shipment_title">Arriving today!</string>
+    <string name="_1400_usd">$1400 USD</string>
+    <string name="sep_20_2023">• Sep 20,2023</string>
 </resources>

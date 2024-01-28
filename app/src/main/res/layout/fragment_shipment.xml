@@ -4,19 +4,79 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/light_gray_background"
     tools:context=".ui.shipment.ShipmentFragment">
 
-    <TextView
-        android:id="@+id/text_notifications"
+    <!-- Header Section -->
+    <RelativeLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/purple_background"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/backArrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/back_btn"
+            android:src="@drawable/ic_back_arrow" />
+
+        <TextView
+            android:id="@+id/headerTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Shipment history"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <!-- TabLayout -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        app:tabMode="scrollable"
+        app:tabInlineLabel="true"
+        app:tabTextColor="@color/white"
+        app:tabSelectedTextColor="@color/white"
+        app:tabIndicatorColor="@color/orange"
+        app:tabIndicatorHeight="3dp"
+        android:background="@color/purple_background"
+        app:layout_constraintTop_toBottomOf="@id/headerLayout">
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <TextView
+        android:id="@+id/fragmentLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Shipments"
+        android:paddingLeft="16dp"
+        android:paddingTop="16sp"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/tabs"
+
+
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/shipmentsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@id/tabs"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/fragmentLabel"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:padding="16dp"
+        tools:listitem="@layout/shipment_item" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

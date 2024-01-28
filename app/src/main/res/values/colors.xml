@@ -11,4 +11,8 @@
     <color name="purple_background">#FF6200EE</color>
     <color name="grey">#E3E3E3</color>
     <color name="orange">#FF9800</color>
+    <color name="status_green">#328A04</color>
+    <color name="red">#F44336</color>
+    <color name="blue">#2196F3</color>
+    <color name="light_purple">#618F53FA</color>
 </resources>
