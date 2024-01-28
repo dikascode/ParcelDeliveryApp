@@ -36,12 +36,6 @@ class ShipmentFragment : Fragment() {
         val tabTitles = arrayOf("All", "Completed", "In progress", "Pending order", "Cancelled")
         val tabCounts = arrayOf(12, 5, 3, 4, 0)
 
-        tabTitles.forEach { title ->
-            val tab = binding.tabs.newTab()
-            tab.text = title
-            binding.tabs.addTab(tab)
-        }
-
         tabTitles.zip(tabCounts).forEachIndexed { index, (title, count) ->
             val tab = binding.tabs.newTab()
             tab.text = title
