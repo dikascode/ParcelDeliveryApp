@@ -6,12 +6,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
 import com.dikascode.parceldeliverydemo.R
-import com.dikascode.parceldeliverydemo.model.Shipment
+import com.dikascode.parceldeliverydemo.model.ShipmentItem
 
 
 class ShipmentViewModel : ViewModel() {
-    private val _shipments = MutableLiveData<List<Shipment>>()
-    val shipments: LiveData<List<Shipment>> = _shipments
+    private val _shipments = MutableLiveData<List<ShipmentItem>>()
+    val shipments: LiveData<List<ShipmentItem>> = _shipments
 
     val tabCounts: LiveData<Map<String, Int>> = shipments.map { list ->
         list.groupingBy { it.statusLabel }.eachCount()
@@ -30,8 +30,8 @@ class ShipmentViewModel : ViewModel() {
     }
 
 
-    private fun getShipments(): List<Shipment> {
-        val mockList = mutableListOf<Shipment>()
+    private fun getShipments(): List<ShipmentItem> {
+        val mockList = mutableListOf<ShipmentItem>()
         val statuses = mutableListOf<String>().apply {
             addAll(List(5) { "loading" })
             addAll(List(3) { "in-progress" })
@@ -40,7 +40,7 @@ class ShipmentViewModel : ViewModel() {
 
         statuses.shuffle()
         statuses.forEachIndexed { _, status ->
-            val shipment = Shipment(
+            val shipmentItem = ShipmentItem(
                 statusLabel = status,
                 title = "Arriving today!",
                 details = "Your delivery, #NEJ20089934122231 from Atlanta, is arriving today!",
@@ -48,7 +48,7 @@ class ShipmentViewModel : ViewModel() {
                 date = "Sep 20,2023",
                 packageImage = R.drawable.ic_profile_picture
             )
-            mockList.add(shipment)
+            mockList.add(shipmentItem)
         }
         return mockList
     }

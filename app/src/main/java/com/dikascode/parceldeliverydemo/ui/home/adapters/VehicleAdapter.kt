@@ -1,4 +1,4 @@
-package com.dikascode.parceldeliverydemo.ui.home.adapter
+package com.dikascode.parceldeliverydemo.ui.home.adapters
 
 import android.view.LayoutInflater
 import android.view.View

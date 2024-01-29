@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dikascode.parceldeliverydemo.R
 import com.dikascode.parceldeliverydemo.databinding.FragmentHomeBinding
 import com.dikascode.parceldeliverydemo.model.Vehicle
-import com.dikascode.parceldeliverydemo.ui.home.adapter.VehicleAdapter
+import com.dikascode.parceldeliverydemo.ui.home.adapters.VehicleAdapter
 
 class HomeFragment : Fragment() {
 

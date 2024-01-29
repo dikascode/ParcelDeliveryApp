@@ -8,9 +8,9 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.dikascode.parceldeliverydemo.R
-import com.dikascode.parceldeliverydemo.model.Shipment
+import com.dikascode.parceldeliverydemo.model.ShipmentItem
 
-class ShipmentAdapter(private val shipments: MutableList<Shipment>) :
+class ShipmentAdapter(private val shipmentItems: MutableList<ShipmentItem>) :
     RecyclerView.Adapter<ShipmentAdapter.ShipmentViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShipmentViewHolder {
@@ -20,17 +20,17 @@ class ShipmentAdapter(private val shipments: MutableList<Shipment>) :
     }
 
     override fun onBindViewHolder(holder: ShipmentViewHolder, position: Int) {
-        val shipment = shipments[position]
+        val shipment = shipmentItems[position]
         holder.bind(shipment)
     }
 
     override fun getItemCount(): Int {
-        return shipments.size
+        return shipmentItems.size
     }
 
-    fun updateData(newShipments: List<Shipment>) {
-        this.shipments.clear()
-        this.shipments.addAll(newShipments)
+    fun updateData(newShipmentItems: List<ShipmentItem>) {
+        this.shipmentItems.clear()
+        this.shipmentItems.addAll(newShipmentItems)
         notifyDataSetChanged()
     }
 
@@ -43,26 +43,26 @@ class ShipmentAdapter(private val shipments: MutableList<Shipment>) :
         private val shipmentDate: TextView = itemView.findViewById(R.id.shipmentDate)
         private val shipmentPackageImage: ImageView = itemView.findViewById(R.id.shipmentPackageImage)
 
-        fun bind(shipment: Shipment) {
-            statusLabel.text = shipment.statusLabel
-            shipmentTitle.text = shipment.title
-            shipmentDetails.text = shipment.details
-            shipmentPrice.text = shipment.price
-            shipmentDate.text = shipment.date
+        fun bind(shipmentItem: ShipmentItem) {
+            statusLabel.text = shipmentItem.statusLabel
+            shipmentTitle.text = shipmentItem.title
+            shipmentDetails.text = shipmentItem.details
+            shipmentPrice.text = shipmentItem.price
+            shipmentDate.text = shipmentItem.date
 
 
-            statusIcon.setImageResource(shipment.statusIcon)
-            shipmentPackageImage.setImageResource(shipment.packageImage)
+            statusIcon.setImageResource(shipmentItem.statusIcon)
+            shipmentPackageImage.setImageResource(shipmentItem.packageImage)
 
             val context = itemView.context
-            val color = when (shipment.statusLabel) {
+            val color = when (shipmentItem.statusLabel) {
                 "in-progress" -> context.getColor(R.color.status_green)
                 "pending" -> context.getColor(R.color.orange)
                 "loading" -> context.getColor(R.color.blue)
                 else -> context.getColor(R.color.orange)
             }
 
-            when (shipment.statusLabel) {
+            when (shipmentItem.statusLabel) {
                 "loading" -> {
                     statusIcon.setImageResource(R.drawable.loading)
                     statusLabel.setTextColor(ContextCompat.getColor(itemView.context, R.color.blue))
