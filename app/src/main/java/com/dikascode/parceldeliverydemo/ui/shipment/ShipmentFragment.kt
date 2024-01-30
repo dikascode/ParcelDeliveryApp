@@ -1,6 +1,8 @@
 package com.dikascode.parceldeliverydemo.ui.shipment
 
 import android.animation.ObjectAnimator
+import android.animation.PropertyValuesHolder
+import android.animation.ValueAnimator
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -111,6 +113,11 @@ class ShipmentFragment : Fragment() {
                 }
                 shipmentViewModel.filterShipments(status)
                 setBadgeColor(tab?.badge, true)
+
+                //Animate
+                tab?.let {
+                    animateTabTitle(it, 0.9f, 300)
+                }
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
@@ -134,6 +141,21 @@ class ShipmentFragment : Fragment() {
             ContextCompat.getColor(requireContext(), R.color.light_gray_background)
         }
     }
+
+    private fun animateTabTitle(tab: TabLayout.Tab, scale: Float, duration: Long) {
+        val textView = (tab.view as ViewGroup).getChildAt(1) as TextView
+        ObjectAnimator.ofPropertyValuesHolder(
+            textView,
+            PropertyValuesHolder.ofFloat("scaleX", scale),
+            PropertyValuesHolder.ofFloat("scaleY", scale)
+        ).apply {
+            this.duration = duration
+            repeatMode = ValueAnimator.REVERSE
+            repeatCount = 1
+            start()
+        }
+    }
+
 
 
     private fun animateBackArrow() {
