@@ -53,6 +53,7 @@
 
     </com.google.android.material.tabs.TabLayout>
 
+
     <TextView
         android:id="@+id/fragmentLabel"
         android:layout_width="match_parent"

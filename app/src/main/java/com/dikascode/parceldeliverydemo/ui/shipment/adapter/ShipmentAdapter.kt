@@ -22,6 +22,11 @@ class ShipmentAdapter(private val shipmentItems: MutableList<ShipmentItem>) :
     override fun onBindViewHolder(holder: ShipmentViewHolder, position: Int) {
         val shipment = shipmentItems[position]
         holder.bind(shipment)
+        holder.itemView.apply {
+            alpha = 0f
+            translationY = 50f // Starts 50 pixels below the final position
+            animate().alpha(1.0f).translationY(0f).setDuration(300).start()
+        }
     }
 
     override fun getItemCount(): Int {
