@@ -31,7 +31,7 @@
             android:layout_marginTop="4dp"
             android:layout_marginStart="10dp"
             android:text="#NEJ20089934122231"
-            android:textSize="14sp" />
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/routeInfo"
@@ -41,7 +41,7 @@
             android:layout_alignBottom="@id/trackingNumber"
             android:layout_marginStart="16dp"
             android:text="Barcelona → Paris"
-            android:textSize="14sp" />
+            android:textSize="12sp" />
 
         <View
             android:layout_width="match_parent"

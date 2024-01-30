@@ -29,7 +29,7 @@
             android:textStyle="bold"
             android:textColor="@color/status_green" /> <!-- Replace with your status color -->
 
-        <!-- ShipmentItem Title -->
+        <!-- Shipment Title -->
         <TextView
             android:id="@+id/shipmentTitle"
             android:layout_width="wrap_content"
@@ -40,7 +40,7 @@
             android:text="@string/shipment_title"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
-        <!-- ShipmentItem Details -->
+        <!-- Shipment Details -->
         <TextView
             android:id="@+id/shipmentDetails"
             android:layout_width="wrap_content"
@@ -51,7 +51,7 @@
             android:maxLines="2"
             android:ellipsize="end" />
 
-        <!-- ShipmentItem Price and Date Container -->
+        <!-- Shipment Price and Date Container -->
         <LinearLayout
             android:id="@+id/priceDateContainer"
             android:layout_width="wrap_content"
@@ -61,7 +61,7 @@
             android:orientation="horizontal"
             android:gravity="bottom">
 
-            <!-- ShipmentItem Price -->
+            <!-- Shipment Price -->
             <TextView
                 android:id="@+id/shipmentPrice"
                 android:layout_width="wrap_content"
@@ -69,7 +69,7 @@
                 android:text="@string/_1400_usd"
                 android:textStyle="bold" />
 
-            <!-- ShipmentItem Date -->
+            <!-- Shipment Date -->
             <TextView
                 android:id="@+id/shipmentDate"
                 android:layout_width="wrap_content"

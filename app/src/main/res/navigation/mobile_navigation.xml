@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navigation_shipment"
-        android:name="com.dikascode.parceldeliverydemo.ui.shipmentItem.ShipmentFragment"
+        android:name="com.dikascode.parceldeliverydemo.ui.shipment.ShipmentFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_shipment" />
 </navigation>

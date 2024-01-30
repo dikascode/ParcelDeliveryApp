@@ -3,6 +3,7 @@ package com.dikascode.parceldeliverydemo.ui.home.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -27,6 +28,10 @@ class VehicleAdapter(private val vehicles: List<Vehicle>) : RecyclerView.Adapter
         holder.typeText.text = vehicle.type
         holder.mottoText.text = vehicle.motto
         holder.imageView.setImageResource(vehicle.imageResId)
+
+        //animation
+        val animation = AnimationUtils.loadAnimation(holder.itemView.context, R.anim.slide_in_right_for_vehicle_adapter)
+        holder.imageView.startAnimation(animation)
     }
 
     override fun getItemCount(): Int = vehicles.size

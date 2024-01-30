@@ -24,7 +24,7 @@ class ShipmentFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        shipmentViewModel = ViewModelProvider(this).get(ShipmentViewModel::class.java)
+        shipmentViewModel = ViewModelProvider(this)[ShipmentViewModel::class.java]
         _binding = FragmentShipmentBinding.inflate(inflater, container, false)
         setupTabLayoutWithCounts()
         setupRecyclerView()
