@@ -22,4 +22,8 @@
         android:name="com.dikascode.parceldeliverydemo.ui.shipment.ShipmentFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_shipment" />
+    <fragment
+        android:id="@+id/checkOutFragment"
+        android:name="com.dikascode.parceldeliverydemo.ui.checkout.CheckOutFragment"
+        android:label="CheckOutFragment" />
 </navigation>
