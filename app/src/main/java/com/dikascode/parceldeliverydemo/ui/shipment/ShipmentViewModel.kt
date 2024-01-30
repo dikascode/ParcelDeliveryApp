@@ -46,7 +46,7 @@ class ShipmentViewModel : ViewModel() {
                 details = "Your delivery, #NEJ20089934122231 from Atlanta, is arriving today!",
                 price = "$1400 USD",
                 date = "Sep 20,2023",
-                packageImage = R.drawable.ic_profile_picture
+                packageImage = R.drawable.box_image
             )
             mockList.add(shipmentItem)
         }

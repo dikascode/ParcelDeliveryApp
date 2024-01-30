@@ -11,12 +11,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.AnimationUtils
+import android.view.animation.OvershootInterpolator
 import android.view.inputmethod.InputMethodManager
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.transition.ChangeBounds
 import androidx.transition.Fade
 import androidx.transition.Slide
 import androidx.transition.Transition
@@ -70,7 +72,8 @@ class HomeFragment : Fragment() {
 
         val adapter = VehicleAdapter(vehicleList)
         binding.vehiclesRecyclerView.adapter = adapter
-        binding.vehiclesRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding.vehiclesRecyclerView.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
 
 
@@ -81,42 +84,70 @@ class HomeFragment : Fragment() {
         binding.upperSection.visibility = View.INVISIBLE
         binding.lowerSection.visibility = View.INVISIBLE
 
-        // Transitions postponed until views have been created and measured
+        // Postpone transitions until the views have been created and measured
         view?.post {
+            val changeBounds = ChangeBounds().apply {
+                interpolator = OvershootInterpolator()
+            }
             val slideFromTop = Slide(Gravity.TOP).apply {
                 addTarget(binding.upperSection)
-                duration = 300 // Duration in milliseconds
+                duration = 400 // Duration in milliseconds
+            }
+            val fade = Fade().apply {
+                addTarget(binding.upperSection)
+                startDelay = 100 // Start after bounds have changed a bit
+                duration = 300
             }
 
+            // Combine slide and fade for upperSection
+            val upperSectionTransitionSet = TransitionSet().apply {
+                addTransition(changeBounds)
+                addTransition(slideFromTop)
+                addTransition(fade)
+            }
+
+            // Slide and fade for lowerSection
+            val slideFromBottom = Slide(Gravity.BOTTOM).apply {
+                addTarget(binding.lowerSection)
+                duration = 300
+            }
+            val fadeIn = Fade().apply {
+                addTarget(binding.lowerSection)
+                startDelay = 200
+                duration = 400
+            }
             val lowerSectionTransitionSet = TransitionSet().apply {
-                // Slide in from the bottom
-                addTransition(Slide(Gravity.BOTTOM).apply {
-                    addTarget(binding.lowerSection)
-                    duration = 300 // Duration in milliseconds
-                })
-                // Fade in
-                addTransition(Fade().apply {
-                    addTarget(binding.lowerSection)
-                    startDelay = 200 // To start after sliding up
-                    duration = 400 // Duration in milliseconds
-                })
+                addTransition(slideFromBottom)
+                addTransition(fadeIn)
             }
 
-
-            TransitionManager.beginDelayedTransition(binding.root as ViewGroup, slideFromTop)
+            // Apply transitions
+            TransitionManager.beginDelayedTransition(
+                binding.root as ViewGroup,
+                upperSectionTransitionSet
+            )
             binding.upperSection.visibility = View.VISIBLE
 
-            TransitionManager.beginDelayedTransition(binding.root as ViewGroup, lowerSectionTransitionSet)
+            TransitionManager.beginDelayedTransition(
+                binding.root as ViewGroup,
+                lowerSectionTransitionSet
+            )
             binding.lowerSection.visibility = View.VISIBLE
         }
 
-//       RecyclerView animation
+        // Animate RecyclerView items
+        animateRecyclerViewItems()
+    }
+
+    private fun animateRecyclerViewItems() {
         val context = binding.root.context
-        val controller = AnimationUtils.loadLayoutAnimation(context, R.anim.layout_animation_slide_right)
+        val controller =
+            AnimationUtils.loadLayoutAnimation(context, R.anim.layout_animation_slide_right)
         binding.vehiclesRecyclerView.layoutAnimation = controller
         binding.vehiclesRecyclerView.adapter?.notifyDataSetChanged()
         binding.vehiclesRecyclerView.scheduleLayoutAnimation()
     }
+
 
     private fun setupSearchEditText() {
         binding.searchEditText.setOnFocusChangeListener { _, hasFocus ->
@@ -151,7 +182,8 @@ class HomeFragment : Fragment() {
     }
 
     private fun hideKeyboard() {
-        val inputMethodManager = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+        val inputMethodManager =
+            activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
         view?.let {
             inputMethodManager?.hideSoftInputFromWindow(it.windowToken, 0)
         }
@@ -160,7 +192,8 @@ class HomeFragment : Fragment() {
     private fun animateBackArrowIn() {
         binding.backArrow.post {
             val backArrow = binding.backArrow
-            backArrow.translationX = -backArrow.width.toFloat() // Start position off-screen to the left
+            backArrow.translationX =
+                -backArrow.width.toFloat() // Start position off-screen to the left
             backArrow.visibility = View.VISIBLE
 
             val animator = ObjectAnimator.ofFloat(backArrow, "translationX", 0f).apply {
@@ -187,11 +220,6 @@ class HomeFragment : Fragment() {
 
         TransitionManager.beginDelayedTransition(binding.upperSection as ViewGroup, transition)
     }
-
-
-
-
-
 
     override fun onDestroyView() {
         super.onDestroyView()

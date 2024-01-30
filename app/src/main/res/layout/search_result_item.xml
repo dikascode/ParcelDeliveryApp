@@ -1,53 +1,52 @@
-<RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/_16dp">
+
+    <ImageView
+        android:id="@+id/itemIcon"
+        android:layout_width="@dimen/_40dp"
+        android:layout_height="@dimen/_40dp"
+        android:src="@drawable/grey_box" />
+
+    <TextView
+        android:id="@+id/itemTitle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignTop="@id/itemIcon"
+        android:layout_marginStart="@dimen/_10dp"
+        android:layout_toEndOf="@id/itemIcon"
+        android:text="@string/summer_linen_jacket"
+        android:textSize="@dimen/_16sp"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
 
-        android:padding="16dp">
+    <TextView
+        android:id="@+id/trackingNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/itemTitle"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="4dp"
+        android:layout_toEndOf="@id/itemIcon"
+        android:text="@string/nej20089934122231"
+        android:textSize="@dimen/_12sp" />
 
-        <ImageView
-            android:id="@+id/itemIcon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/ic_notifications" />
+    <TextView
+        android:id="@+id/routeInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/trackingNumber"
+        android:layout_marginStart="@dimen/_16dp"
+        android:layout_toEndOf="@id/trackingNumber"
+        android:text="@string/barcelona_paris"
+        android:textSize="@dimen/_12sp" />
 
-        <TextView
-            android:id="@+id/itemTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/itemIcon"
-            android:layout_alignTop="@id/itemIcon"
-            android:layout_marginStart="10dp"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:text="Summer linen jacket" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1dp"
+        android:layout_below="@id/routeInfo"
+        android:layout_marginTop="@dimen/_16dp"
+        android:background="@android:color/darker_gray" />
 
-        <TextView
-            android:id="@+id/trackingNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/itemIcon"
-            android:layout_below="@id/itemTitle"
-            android:layout_marginTop="4dp"
-            android:layout_marginStart="10dp"
-            android:text="#NEJ20089934122231"
-            android:textSize="12sp" />
-
-        <TextView
-            android:id="@+id/routeInfo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/trackingNumber"
-            android:layout_alignBottom="@id/trackingNumber"
-            android:layout_marginStart="16dp"
-            android:text="Barcelona → Paris"
-            android:textSize="12sp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@id/routeInfo"
-            android:layout_marginTop="16dp"
-            android:background="@android:color/darker_gray" />
-
-    </RelativeLayout>
+</RelativeLayout>

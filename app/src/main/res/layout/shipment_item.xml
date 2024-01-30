@@ -3,40 +3,56 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="4dp">
+    android:layout_margin="@dimen/_8dp"
+    app:cardCornerRadius="@dimen/_8dp"
+    app:cardElevation="@dimen/_4dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:padding="@dimen/_16dp">
 
         <!-- Status Icon and Label -->
-        <ImageView
-            android:id="@+id/statusIcon"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/ic_notifications" />
-
-        <TextView
-            android:id="@+id/statusLabel"
+        <LinearLayout
+            android:id="@+id/labelLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/statusIcon"
-            android:layout_marginStart="8dp"
-            android:text="in-progress"
-            android:textStyle="bold"
-            android:textColor="@color/status_green" /> <!-- Replace with your status color -->
+            android:background="@drawable/rounded_status_grey_background"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/_12dp"
+            android:paddingTop="@dimen/_2dp"
+            android:paddingEnd="@dimen/_12dp"
+            android:paddingBottom="@dimen/_2dp">
+
+            <ImageView
+                android:id="@+id/statusIcon"
+                android:layout_width="@dimen/_24dp"
+                android:layout_height="@dimen/_24dp"
+                android:src="@drawable/outline_notification" />
+
+            <TextView
+                android:id="@+id/statusLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8dp"
+                android:layout_toEndOf="@id/statusIcon"
+                android:text="@string/in_progress"
+                android:textColor="@color/status_green"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
 
         <!-- Shipment Title -->
         <TextView
             android:id="@+id/shipmentTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/statusIcon"
+            android:layout_below="@id/labelLayout"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/_8dp"
+            android:layout_marginBottom="@dimen/_5dp"
             android:text="@string/shipment_title"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
@@ -46,10 +62,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/shipmentTitle"
+            android:layout_marginBottom="@dimen/_10dp"
             android:layout_toStartOf="@+id/shipmentPackageImage"
-            android:text="@string/shipment_details"
+            android:ellipsize="end"
             android:maxLines="2"
-            android:ellipsize="end" />
+            android:text="@string/shipment_details"
+            android:textSize="@dimen/_14sp" />
 
         <!-- Shipment Price and Date Container -->
         <LinearLayout
@@ -58,8 +76,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/shipmentDetails"
             android:layout_alignParentStart="true"
-            android:orientation="horizontal"
-            android:gravity="bottom">
+            android:gravity="bottom"
+            android:orientation="horizontal">
 
             <!-- Shipment Price -->
             <TextView
@@ -67,6 +85,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/_1400_usd"
+                android:textColor="@color/purple_700"
                 android:textStyle="bold" />
 
             <!-- Shipment Date -->
@@ -74,18 +93,18 @@
                 android:id="@+id/shipmentDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/sep_20_2023"
-                android:layout_marginStart="8dp" />
+                android:layout_marginStart="@dimen/_8dp"
+                android:text="@string/sep_20_2023" />
         </LinearLayout>
 
         <!-- Package Image -->
         <ImageView
             android:id="@+id/shipmentPackageImage"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:layout_centerVertical="true"
+            android:layout_width="@dimen/_64dp"
+            android:layout_height="@dimen/_64dp"
             android:layout_alignParentEnd="true"
-            android:src="@drawable/ic_profile_picture" /> <!-- Replace with your package image drawable -->
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_profile_picture" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
 

@@ -12,8 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/purple_background"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
+        android:paddingStart="@dimen/_16dp"
+        android:paddingEnd="@dimen/_16dp"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
@@ -32,7 +32,7 @@
             android:layout_centerInParent="true"
             android:text="@string/header_title_calculate"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="@dimen/_20sp"
             android:textStyle="bold" />
     </RelativeLayout>
 
@@ -42,10 +42,10 @@
         android:id="@+id/destinationTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Destination"
-        android:textSize="20sp"
+        android:layout_marginStart="@dimen/_16dp"
+        android:layout_marginTop="@dimen/_16dp"
+        android:text="@string/destination"
+        android:textSize="@dimen/_20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headerLayout" />
@@ -56,9 +56,9 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:background="@color/white"
-        android:padding="16dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="4dp"
+        android:padding="@dimen/_16dp"
+        app:cardCornerRadius="@dimen/_16dp"
+        app:cardElevation="@dimen/_4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/destinationTitle">
@@ -68,40 +68,40 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="@dimen/_16dp">
 
             <!-- Sender Location LinearLayout -->
             <LinearLayout
                 android:id="@+id/senderLocationLinearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="@dimen/_10dp"
                 android:background="@drawable/rounded_corner_bg"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:padding="10dp">
+                android:padding="@dimen/_10dp">
 
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_notifications" />
+                    android:layout_width="@dimen/_24dp"
+                    android:layout_height="@dimen/_24dp"
+                    android:src="@drawable/download_img" />
 
                 <View
-                    android:layout_width="1dp"
-                    android:layout_height="24dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
+                    android:layout_width="@dimen/_1dp"
+                    android:layout_height="@dimen/_24dp"
+                    android:layout_marginLeft="@dimen/_5dp"
+                    android:layout_marginRight="@dimen/_5dp"
                     android:background="@color/grey" />
 
                 <EditText
                     android:id="@+id/senderLocationEditText"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/_0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@null"
-                    android:hint="Sender location"
+                    android:hint="@string/sender_location"
                     android:inputType="text"
-                    android:padding="8dp"
+                    android:padding="@dimen/_8dp"
                     android:textColorHint="@color/grey" />
             </LinearLayout>
 
@@ -110,33 +110,33 @@
                 android:id="@+id/receiverLocationLinearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="@dimen/_10dp"
                 android:background="@drawable/rounded_corner_bg"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:padding="10dp">
+                android:padding="@dimen/_10dp">
 
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_notifications" />
+                    android:layout_width="@dimen/_24dp"
+                    android:layout_height="@dimen/_24dp"
+                    android:src="@drawable/upload_img" />
 
                 <View
-                    android:layout_width="1dp"
-                    android:layout_height="24dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
+                    android:layout_width="@dimen/_1dp"
+                    android:layout_height="@dimen/_24dp"
+                    android:layout_marginLeft="@dimen/_5dp"
+                    android:layout_marginRight="@dimen/_5dp"
                     android:background="@color/grey" />
 
                 <EditText
                     android:id="@+id/receiverLocationEditText"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/_0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@null"
-                    android:hint="Receiver location"
+                    android:hint="@string/receiver_location"
                     android:inputType="text"
-                    android:padding="8dp"
+                    android:padding="@dimen/_8dp"
                     android:textColorHint="@color/grey" />
             </LinearLayout>
 
@@ -145,33 +145,33 @@
                 android:id="@+id/approxWeightLinearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="@dimen/_10dp"
                 android:background="@drawable/rounded_corner_bg"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:padding="10dp">
+                android:padding="@dimen/_10dp">
 
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_notifications" />
+                    android:layout_width="@dimen/_24dp"
+                    android:layout_height="@dimen/_24dp"
+                    android:src="@drawable/hour_glass_img" />
 
                 <View
-                    android:layout_width="1dp"
-                    android:layout_height="24dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
+                    android:layout_width="@dimen/_1dp"
+                    android:layout_height="@dimen/_24dp"
+                    android:layout_marginLeft="@dimen/_5dp"
+                    android:layout_marginRight="@dimen/_5dp"
                     android:background="@color/grey" />
 
                 <EditText
                     android:id="@+id/approxWeightEditText"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/_0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@null"
-                    android:hint="Approx Weight"
+                    android:hint="@string/approx_weight"
                     android:inputType="text"
-                    android:padding="8dp"
+                    android:padding="@dimen/_8dp"
                     android:textColorHint="@color/grey" />
             </LinearLayout>
         </LinearLayout>
@@ -183,10 +183,10 @@
         android:id="@+id/packagingTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Packaging"
-        android:textSize="20sp"
+        android:layout_marginStart="@dimen/_16dp"
+        android:layout_marginTop="@dimen/_16dp"
+        android:text="@string/packaging"
+        android:textSize="@dimen/_20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/destinationCard" />
@@ -194,14 +194,14 @@
     <!-- Package Option Spinner/Dropdown -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/packageOptionInputLayout"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/_0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="@dimen/_16dp"
+        android:layout_marginTop="@dimen/_4dp"
+        android:layout_marginEnd="@dimen/_16dp"
         android:background="@drawable/rounded_corner_background"
-        android:elevation="2dp"
-        android:padding="8dp"
+        android:elevation="@dimen/_2dp"
+        android:padding="@dimen/_8dp"
         app:boxBackgroundMode="outline"
         app:boxStrokeColor="@color/grey"
         app:endIconMode="dropdown_menu"
@@ -215,19 +215,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            android:drawableStart="@drawable/ic_notifications"
-            android:drawablePadding="8dp"
+            android:drawableStart="@drawable/grey_box"
+            android:drawablePadding="@dimen/_8dp"
             android:hint="Box"
             android:inputType="none"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
+            android:paddingStart="@dimen/_12dp"
+            android:paddingEnd="@dimen/_12dp"
             android:popupBackground="@color/white"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            app:boxCornerRadiusBottomEnd="8dp"
-            app:boxCornerRadiusBottomStart="8dp"
-            app:boxCornerRadiusTopEnd="8dp"
-            app:boxCornerRadiusTopStart="8dp" />
+            android:textSize="@dimen/_16sp"
+            app:boxCornerRadiusBottomEnd="@dimen/_8dp"
+            app:boxCornerRadiusBottomStart="@dimen/_8dp"
+            app:boxCornerRadiusTopEnd="@dimen/_8dp"
+            app:boxCornerRadiusTopStart="@dimen/_8dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -236,10 +236,10 @@
         android:id="@+id/categoriesTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Categories"
-        android:textSize="20sp"
+        android:layout_marginStart="@dimen/_16dp"
+        android:layout_marginTop="@dimen/_16dp"
+        android:text="@string/categories"
+        android:textSize="@dimen/_20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/packageOptionInputLayout" />
@@ -248,10 +248,10 @@
         android:id="@+id/gridLayoutCategories"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="@dimen/_4dp"
         android:columnCount="4"
         android:columnOrderPreserved="true"
-        android:padding="4dp"
+        android:padding="@dimen/_4dp"
         android:rowCount="2"
         app:layout_constraintTop_toBottomOf="@id/categoriesTitle">
 
@@ -259,109 +259,108 @@
         <Button
             android:id="@+id/buttonDocuments"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="@dimen/_50dp"
             android:layout_columnWeight="1"
-            android:layout_margin="4dp"
-            android:padding="0dp"
-            android:text="Documents"
+            android:layout_margin="@dimen/_4dp"
+            android:padding="@dimen/_0dp"
+            android:text="@string/documents"
             android:textColor="@color/black"
-            android:textSize="10sp" />
+            android:textSize="@dimen/_10sp" />
 
         <!-- Category Button for 'Glass' -->
         <Button
             android:id="@+id/buttonGlass"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="@dimen/_50dp"
             android:layout_columnWeight="1"
-            android:layout_margin="4dp"
-            android:padding="0dp"
-            android:text="Glass"
+            android:layout_margin="@dimen/_4dp"
+            android:padding="@dimen/_0dp"
+            android:text="@string/glass"
             android:textColor="@color/black"
-            android:textSize="10sp" />
+            android:textSize="@dimen/_10sp" />
 
         <!-- Category Button for 'Liquid' -->
         <Button
             android:id="@+id/buttonLiquid"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="@dimen/_50dp"
             android:layout_columnWeight="1"
-            android:layout_margin="4dp"
-            android:padding="0dp"
-            android:text="Liquid"
-
+            android:layout_margin="@dimen/_4dp"
+            android:padding="@dimen/_0dp"
+            android:text="@string/liquid"
             android:textColor="@color/black"
-            android:textSize="10sp" />
+            android:textSize="@dimen/_10sp" />
 
         <!-- Category Button for 'Food' -->
         <Button
             android:id="@+id/buttonFood"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="@dimen/_50dp"
             android:layout_columnWeight="1"
-            android:layout_margin="4dp"
-            android:padding="0dp"
-            android:text="Food"
+            android:layout_margin="@dimen/_4dp"
+            android:padding="@dimen/_0dp"
+            android:text="@string/food"
             android:textColor="@color/black"
-            android:textSize="10sp" />
+            android:textSize="@dimen/_10sp" />
 
         <!-- Category Button for 'Electronic' -->
         <Button
             android:id="@+id/buttonElectronic"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="@dimen/_50dp"
             android:layout_columnWeight="1"
-            android:layout_margin="4dp"
-            android:padding="0dp"
-            android:text="Electronic"
+            android:layout_margin="@dimen/_4dp"
+            android:padding="@dimen/_0dp"
+            android:text="@string/electronic"
             android:textColor="@color/black"
-            android:textSize="10sp" />
+            android:textSize="@dimen/_10sp" />
 
         <!-- Category Button for 'Product' -->
         <Button
             android:id="@+id/buttonProduct"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="@dimen/_50dp"
             android:layout_columnWeight="1"
-            android:layout_margin="4dp"
-            android:padding="0dp"
-            android:text="Product"
+            android:layout_margin="@dimen/_4dp"
+            android:padding="@dimen/_0dp"
+            android:text="@string/product"
             android:textColor="@color/black"
-            android:textSize="10sp" />
+            android:textSize="@dimen/_10sp" />
 
         <!-- Category Button for 'Others' -->
         <Button
             android:id="@+id/buttonOther"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="@dimen/_50dp"
             android:layout_columnWeight="1"
-            android:layout_margin="4dp"
-            android:padding="0dp"
-            android:text="Others"
+            android:layout_margin="@dimen/_4dp"
+            android:padding="@dimen/_0dp"
+            android:text="@string/others"
             android:textColor="@color/black"
-            android:textSize="10sp" />
+            android:textSize="@dimen/_10sp" />
     </GridLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/calculateButton"
         style="@style/CustomButton"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/_0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="@dimen/_16dp"
+        android:layout_marginTop="@dimen/_10dp"
+        android:layout_marginEnd="@dimen/_16dp"
+        android:layout_marginBottom="@dimen/_16dp"
         android:background="@drawable/bg_calculate_button"
-        android:padding="12dp"
-        android:text="Calculate"
+        android:padding="@dimen/_12dp"
+        android:text="@string/calculate"
         android:textColor="@color/white"
-        app:cornerRadius="30dp"
+        app:cornerRadius="@dimen/_30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gridLayoutCategories" />

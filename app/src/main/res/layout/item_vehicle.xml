@@ -3,40 +3,40 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginRight="10dp"
-    app:cardCornerRadius="4dp"
-    app:cardElevation="4dp">
+    android:layout_marginRight="@dimen/_10dp"
+    app:cardCornerRadius="@dimen/_4dp"
+    app:cardElevation="@dimen/_4dp">
 
     <LinearLayout
-        android:layout_width="150dp"
+        android:layout_width="@dimen/_150dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="@dimen/_16dp">
 
         <TextView
             android:id="@+id/vehicleTypeText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textSize="18sp"
-            android:text="Ocean freight"
+            android:layout_marginTop="@dimen/_8dp"
+            android:textSize="@dimen/_18sp"
+            android:text="@string/ocean_freight"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
         <TextView
             android:id="@+id/vehicleMottoText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:text="International"
+            android:textSize="@dimen/_14sp"
+            android:text="@string/international"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         <ImageView
             android:id="@+id/vehicleImage"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="@dimen/_120dp"
             android:contentDescription="@string/vehicle_image"
             android:scaleType="fitCenter"
-            android:paddingStart="20dp"
+            android:paddingStart="@dimen/_20dp"
             app:srcCompat="@drawable/ic_vehicle_placeholder" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

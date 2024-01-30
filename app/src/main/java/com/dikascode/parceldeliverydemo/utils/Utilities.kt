@@ -5,6 +5,7 @@ import android.animation.ObjectAnimator
 import android.animation.PropertyValuesHolder
 import android.content.Context
 import android.view.View
+import android.view.animation.DecelerateInterpolator
 import android.widget.Toast
 
 object Utilities {
@@ -14,7 +15,7 @@ object Utilities {
 
     fun animateButtonScale(button: View) {
         val scaleFactor = 0.9f
-        val duration = 200L
+        val duration = 100L
 
         val scaleInX = PropertyValuesHolder.ofFloat(View.SCALE_X, scaleFactor)
         val scaleInY = PropertyValuesHolder.ofFloat(View.SCALE_Y, scaleFactor)
@@ -27,5 +28,18 @@ object Utilities {
         val animatorSet = AnimatorSet()
         animatorSet.playSequentially(scaleInAnimator, scaleOutAnimator)
         animatorSet.start()
+    }
+
+    fun slideUpAndFadeIn(view: View) {
+        view.post {
+            view.translationY = 50f
+            view.alpha = 0f
+            view.animate()
+                .translationY(0f)
+                .alpha(1f)
+                .setDuration(500)
+                .setInterpolator(DecelerateInterpolator())
+                .start()
+        }
     }
 }

@@ -3,7 +3,7 @@ package com.dikascode.parceldeliverydemo.model
 import com.dikascode.parceldeliverydemo.R
 
 data class ShipmentItem(
-    val statusIcon: Int = R.drawable.ic_notifications,
+    val statusIcon: Int = R.drawable.ic_notifications_black_24dp,
     val statusLabel: String,
     val title: String,
     val details: String,

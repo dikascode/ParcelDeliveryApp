@@ -13,8 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/purple_background"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
+        android:paddingStart="@dimen/_16dp"
+        android:paddingEnd="@dimen/_16dp"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
@@ -31,9 +31,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Shipment history"
+            android:text="@string/shipment_history"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="@dimen/_20sp"
             android:textStyle="bold" />
     </RelativeLayout>
 
@@ -47,7 +47,7 @@
         app:tabTextColor="@color/white"
         app:tabSelectedTextColor="@color/white"
         app:tabIndicatorColor="@color/orange"
-        app:tabIndicatorHeight="3dp"
+        app:tabIndicatorHeight="@dimen/_3dp"
         android:background="@color/purple_background"
         app:layout_constraintTop_toBottomOf="@id/headerLayout">
 
@@ -58,26 +58,24 @@
         android:id="@+id/fragmentLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Shipments"
-        android:paddingLeft="16dp"
-        android:paddingTop="16sp"
-        android:textSize="24sp"
+        android:text="@string/shipments"
+        android:paddingLeft="@dimen/_16dp"
+        android:paddingTop="@dimen/_16dp"
+        android:textSize="@dimen/_24sp"
         android:textStyle="bold"
         android:textColor="@color/black"
         app:layout_constraintTop_toBottomOf="@+id/tabs"
-
-
         />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/shipmentsRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="@dimen/_0dp"
         android:layout_below="@id/tabs"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintTop_toBottomOf="@id/fragmentLabel"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:padding="16dp"
+        android:padding="@dimen/_16dp"
         tools:listitem="@layout/shipment_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

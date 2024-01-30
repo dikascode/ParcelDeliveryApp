@@ -16,18 +16,18 @@
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:drawableStart="@drawable/ic_search"
-            android:drawablePadding="10dp"
-            android:hint="Enter the receipt number ..."
+            android:drawablePadding="@dimen/_10dp"
+            android:hint="@string/enter_the_receipt_number"
             android:inputType="text"
-            android:paddingStart="16dp"
-            android:paddingTop="12dp"
-            android:paddingEnd="48dp"
-            android:paddingBottom="12dp" />
+            android:paddingStart="@dimen/_16dp"
+            android:paddingTop="@dimen/_12dp"
+            android:paddingEnd="@dimen/_48dp"
+            android:paddingBottom="@dimen/_12dp" />
 
         <ImageView
             android:id="@+id/iconRight"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/_50dp"
+            android:layout_height="@dimen/_50dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:src="@drawable/ic_profile_picture" />

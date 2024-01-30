@@ -65,6 +65,10 @@ class CalculateFragment : Fragment() {
                 findNavController().navigate(R.id.checkOutFragment)
             }
         }
+
+        binding.backArrow.setOnClickListener {
+            findNavController().navigate(R.id.navigation_home)
+        }
     }
 
 

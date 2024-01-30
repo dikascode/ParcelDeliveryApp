@@ -13,6 +13,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dikascode.parceldeliverydemo.utils.Constants.THRESHOLD_FAST_SCROLL
@@ -28,51 +29,23 @@ class ShipmentFragment : Fragment() {
 
     private var _binding: FragmentShipmentBinding? = null
     private val binding get() = _binding!!
-    private lateinit var shipmentViewModel: ShipmentViewModel
-    private lateinit var shipmentAdapter: ShipmentAdapter
-    private var lastAnimatedPosition = -1
+    private val shipmentViewModel by lazy { ViewModelProvider(this)[ShipmentViewModel::class.java] }
+    private val shipmentAdapter by lazy { ShipmentAdapter(mutableListOf()) }
+
+    companion object {
+        private const val ANIMATION_DURATION = 300L
+        private const val FAST_SCROLL_THRESHOLD = 50
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        shipmentViewModel = ViewModelProvider(this)[ShipmentViewModel::class.java]
         _binding = FragmentShipmentBinding.inflate(inflater, container, false)
-        setupTabLayoutWithCounts()
-        setupRecyclerView()
-        observeShipments()
-        binding.shipmentsRecyclerView.itemAnimator = CustomRecyclerViewItemAnimator()
-        binding.shipmentsRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-
-                val layoutManager = recyclerView.layoutManager as LinearLayoutManager
-                val firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition()
-                val lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition()
-
-                for (position in firstVisibleItemPosition..lastVisibleItemPosition) {
-                    if (position > lastAnimatedPosition) {
-                        val view = layoutManager.findViewByPosition(position) ?: continue
-
-                        // No animation if scrolling too fast
-                        if (abs(dy) > THRESHOLD_FAST_SCROLL) {
-                            //do nothing
-                        } else {
-                            view.animate()
-                                .translationY(0f)
-                                .alpha(1f)
-                                .setInterpolator(AccelerateDecelerateInterpolator())
-                                .setDuration(300)
-                                .start()
-                        }
-                        lastAnimatedPosition = position
-                    }
-                }
-            }
-        })
-
-
+        initializeUI()
         return binding.root
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -81,7 +54,34 @@ class ShipmentFragment : Fragment() {
         animateHeaderTitle()
         animateTabLayout()
         animateFragmentLabel()
+
+        binding.backArrow.setOnClickListener {
+            findNavController().navigate(R.id.navigation_home)
+        }
     }
+
+    private fun initializeUI() {
+        setupTabLayoutWithCounts()
+        setupRecyclerView()
+        observeShipments()
+        setupScrollListener()
+        setupClickListeners()
+    }
+
+    private fun setupScrollListener() {
+        binding.shipmentsRecyclerView.addOnScrollListener(ShipmentScrollListener())
+    }
+
+    private fun setupClickListeners() {
+        binding.backArrow.setOnClickListener { navigateToHome() }
+    }
+
+    private fun navigateToHome() {
+        findNavController().navigate(R.id.navigation_home)
+    }
+
+
+
 
     private fun setupTabLayoutWithCounts() {
         val tabTitles = arrayOf("All", "Completed", "In progress", "Pending order", "Cancelled")
@@ -171,13 +171,46 @@ class ShipmentFragment : Fragment() {
         }
     }
 
+    inner class ShipmentScrollListener : RecyclerView.OnScrollListener() {
+        private var lastAnimatedPosition = -1
+
+        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+            super.onScrolled(recyclerView, dx, dy)
+            if (abs(dy) > FAST_SCROLL_THRESHOLD) return
+
+            (recyclerView.layoutManager as? LinearLayoutManager)?.let { layoutManager ->
+                val firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition()
+                animateVisibleItems(layoutManager, firstVisibleItemPosition)
+            }
+        }
+
+        private fun animateVisibleItems(layoutManager: LinearLayoutManager, firstVisibleItemPosition: Int) {
+            val visibleItemCount = layoutManager.childCount
+            val endPosition = firstVisibleItemPosition + visibleItemCount
+            for (position in firstVisibleItemPosition until endPosition) {
+                if (position > lastAnimatedPosition) {
+                    layoutManager.findViewByPosition(position)?.animateItem()
+                    lastAnimatedPosition = position
+                }
+            }
+        }
+
+        private fun View.animateItem() {
+            this.animate()
+                .translationY(0f)
+                .alpha(1f)
+                .setInterpolator(AccelerateDecelerateInterpolator())
+                .setDuration(ANIMATION_DURATION)
+                .start()
+        }
+    }
 
     private fun animateHeaderTitle() {
         binding.headerTitle.apply {
             alpha = 0f
             translationY = 50f
             visibility = View.VISIBLE
-            animate().alpha(1f).translationY(0f).setDuration(300).start()
+            animate().alpha(1f).translationY(0f).setDuration(500).start()
         }
     }
 
@@ -217,9 +250,7 @@ class ShipmentFragment : Fragment() {
 
 
     private fun setupRecyclerView() {
-        shipmentAdapter = ShipmentAdapter(mutableListOf())
         binding.shipmentsRecyclerView.adapter = shipmentAdapter
-        binding.shipmentsRecyclerView.layoutManager = LinearLayoutManager(context)
     }
 
     private fun observeShipments() {

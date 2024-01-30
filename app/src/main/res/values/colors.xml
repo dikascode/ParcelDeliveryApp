@@ -15,4 +15,7 @@
     <color name="red">#F44336</color>
     <color name="blue">#2196F3</color>
     <color name="light_purple">#618F53FA</color>
+    <color name="pink">#FD9C68</color>
+    <color name="dark_purple">#3C2269</color>
+    <color name="light_green">#4CAF50</color>
 </resources>
